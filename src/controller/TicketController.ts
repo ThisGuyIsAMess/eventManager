@@ -12,7 +12,8 @@ export class TicketController {
         const id = parseInt(request.params.id)
 
         const ticket = await this.ticketRepository.findOne({
-            where: { id: id }
+            where: { id: id },
+            relations: ['seats', 'user']
         })
 
         if (!ticket) {
@@ -29,18 +30,17 @@ export class TicketController {
         const ticket = Object.assign(new Ticket(), {
             purchaseDate,
             totalPrice,
-            user
+            user,
+            seats
         })
 
         const savedTicket = await this.ticketRepository.save(ticket);
-        savedTicket.seats = seats;
-        this.ticketRepository.save(savedTicket);
-            /*for (const seatData of seats) {
-                const seat = await this.seatRepository.findOneBy({ id: seatData.id });
-                seat.ticket = Object.assign(savedTicket);
+        for (const seatData of seats) {
+            const seat = await this.seatRepository.findOneBy({ id: seatData.id });
+            seat.ticket = savedTicket;
 
-                await this.seatRepository.save(seat);
-            }*/
+            await this.seatRepository.save(seat);
+        }
         return savedTicket;
     }
 }
