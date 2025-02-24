@@ -12,6 +12,7 @@
    "dependencies": {
       "body-parser": "^1.19.1",
       "cors": "^2.8.5",
+      "drizzle-kit": "^0.30.4",
       "express": "^4.17.2",
       "mysql": "^2.14.1",
       "reflect-metadata": "^0.1.13",

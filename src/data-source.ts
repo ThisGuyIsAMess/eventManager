@@ -7,7 +7,7 @@ export const AppDataSource = new DataSource({
     port: 3306,
     username: "root",
     password: "isca2025.",
-    database: "eventful",
+    database: "eventful2",
     synchronize: true,
     logging: false,
     entities: [__dirname + "/entity/*.ts"],

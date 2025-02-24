@@ -32,6 +32,11 @@ export const Routes = [{
     route: "/eventful/ticket/buyticket",
     controller: TicketController,
     action: "save"
+}, {
+    method: "get",
+    route: "/eventful/ticket/getticket/:id",
+    controller: TicketController,
+    action: "getOne"
 }/*, {
     method: "delete",
     route: "/users/:id",

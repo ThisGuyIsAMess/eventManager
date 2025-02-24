@@ -1,7 +1,7 @@
 import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm"
-import { Region } from "./Region"
 import { Session } from "./Session"
 import { Company } from "./Company"
+import { Seat } from "./Seat"
 
 @Entity()
 export class Room {
@@ -11,10 +11,10 @@ export class Room {
     @Column()
     name: string
 
-    @OneToMany(() => Region, region => region.room, {onDelete: 'CASCADE',})
-    regions: Region[]
-    @OneToMany(() => Session, session => session.room, {onDelete: 'CASCADE',})
+    @OneToMany(() => Seat, seat => seat.room)
+    seats: Seat[]
+    @OneToMany(() => Session, session => session.room)
     sessions: Session[]
-    @ManyToOne(() => Company, company => company.rooms, {onDelete: 'CASCADE',})
+    @ManyToOne(() => Company, company => company.rooms)
     company: Company
 }

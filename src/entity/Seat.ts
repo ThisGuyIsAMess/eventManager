@@ -1,7 +1,7 @@
 import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm"
 import { Ticket } from "./Ticket"
-import { Session } from "./Session"
-import { Region } from "./Region"
+import { Type } from "./Type"
+import { Room } from "./Room"
 
 @Entity()
 export class Seat {
@@ -13,10 +13,10 @@ export class Seat {
     @Column()
     seatNum: number
 
-    @ManyToOne(() => Ticket, ticket => ticket.seats, {onDelete: 'CASCADE',})
-    ticket: Ticket
-    @ManyToOne(() => Session, session => session.seats, {onDelete: 'CASCADE',})
-    session: Session
-    @ManyToOne(() => Region, region => region.seats, {onDelete: 'CASCADE',})
-    region: Region
+    @OneToMany(() => Ticket, ticket => ticket.seat)
+    tickets: Ticket[]
+    @ManyToOne(() => Room, room => room.seats)
+    room: Room
+    @ManyToOne(() => Type, type => type.seats)
+    type: Type
 }

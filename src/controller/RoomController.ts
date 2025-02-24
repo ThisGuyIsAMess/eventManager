@@ -3,8 +3,7 @@ import { NextFunction, Request, Response } from "express"
 import { Room } from "../entity/Room"
 
 export class RoomController {
-
-    private roomRepository = AppDataSource.getRepository(Room)
+    /*private roomRepository = AppDataSource.getRepository(Room)
 
     async getOne(request: Request, response: Response, next: NextFunction) {
         const id = parseInt(request.params.id)
@@ -24,7 +23,7 @@ export class RoomController {
         return this.roomRepository.find({
             relations: ['sessions', 'sessions.seats', 'sessions.seats.ticket', 'sessions.seats.region']
         })
-    }
+    }*/
 
     /*import { Photo } from "./entity/Photo"
     import { AppDataSource } from "./index"

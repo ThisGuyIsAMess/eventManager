@@ -3,8 +3,7 @@ import { NextFunction, Request, Response } from "express"
 import { User } from "../entity/User"
 
 export class UserController {
-
-    private userRepository = AppDataSource.getRepository(User)
+    /*private userRepository = AppDataSource.getRepository(User)
 
     async getOne(request: Request, response: Response, next: NextFunction) {
         const id = parseInt(request.params.id)
@@ -38,7 +37,7 @@ export class UserController {
         })
 
         return this.userRepository.save(user)
-    }
+    }*/
 
     //For update, just get user by id, and update it
 

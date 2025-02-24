@@ -1,19 +1,17 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from "typeorm"
-import { User } from "./User"
+import { Entity, PrimaryGeneratedColumn, ManyToOne } from "typeorm"
 import { Seat } from "./Seat"
+import { Session } from "./Session"
+import { Purchase } from "./Purchase"
 
 @Entity()
 export class Ticket {
     @PrimaryGeneratedColumn()
     id: number
 
-    @Column()
-    purchaseDate: string
-    @Column()
-    totalPrice: number
-
-    @OneToMany(() => Seat, seat => seat.ticket, {onUpdate: 'CASCADE',})
-    seats: Seat[]
-    @ManyToOne(() => User, user => user.tickets)
-    user: User
+    @ManyToOne(() => Seat, seat => seat.tickets)
+    seat: Seat
+    @ManyToOne(() => Session, session => session.tickets)
+    session: Session
+    @ManyToOne(() => Purchase, purchase => purchase.tickets)
+    purchase: Purchase
 }
