@@ -3,8 +3,7 @@ import { NextFunction, Request, Response } from "express"
 import { Event } from "../entity/Event"
 
 export class EventController {
-
-    private eventRepository = AppDataSource.getRepository(Event)
+    /*private eventRepository = AppDataSource.getRepository(Event)
 
     async getOne(request: Request, response: Response, next: NextFunction) {
         const id = parseInt(request.params.id)
@@ -24,5 +23,5 @@ export class EventController {
         return this.eventRepository.find({
             relations: ['sessions', 'sessions.room', 'sessions.room.regions', 'sessions.room.regions.seats', 'sessions.room.regions.seats.ticket']
         })
-    }
+    }*/
 }

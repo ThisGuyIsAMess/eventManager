@@ -2,6 +2,7 @@ import { Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "ty
 import { Room } from "./Room"
 import { Event } from "./Event"
 import { Seat } from "./Seat"
+import { Ticket } from "./Ticket"
 
 @Entity()
 export class Session {
@@ -11,8 +12,8 @@ export class Session {
     @Column()
     date: Date
 
-    @OneToMany(() => Seat, seat => seat.session, {onDelete: 'CASCADE',})
-    seats: Seat[]
+    @OneToMany(() => Ticket, ticket => ticket.session, {onDelete: 'CASCADE',})
+    tickets: Ticket[]
     @ManyToOne(() => Room, room => room.sessions, {onDelete: 'CASCADE',})
     room: Room
     @ManyToOne(() => Event, event => event.sessions, {onDelete: 'CASCADE',})
